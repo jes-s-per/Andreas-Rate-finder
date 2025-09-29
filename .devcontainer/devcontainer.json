@@ -1,14 +1,14 @@
 {
-   "name": "My Project Codespace",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {},
-   "postCreateCommand": "npm install",
+  "name": "Andreas Rate Finder",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+  "postCreateCommand": "npm install -g live-server",
+  "forwardPorts": [8080],
   "customizations": {
     "vscode": {
       "extensions": [
-        "dbaeumer.vscode-eslint",
-        "ms-azuretools.vscode-docker"
+        "ritwickdey.liveserver"
       ]
     }
-  }
+  },
+  "postStartCommand": "live-server --port=8080 --host=0.0.0.0"
 }
