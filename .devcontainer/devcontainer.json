@@ -1,14 +1,6 @@
 {
-  "name": "Andreas Rate Finder",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
-  "postCreateCommand": "npm install -g live-server",
-  "forwardPorts": [8080],
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ritwickdey.liveserver"
-      ]
-    }
-  },
-  "postStartCommand": "live-server --port=8080 --host=0.0.0.0"
+  "name": "PHP Codespace",
+  "image": "mcr.microsoft.com/devcontainers/php:8.2-apache",
+  "forwardPorts": [8000],
+  "postStartCommand": "php -S 0.0.0.0:8000 -t public"
 }
