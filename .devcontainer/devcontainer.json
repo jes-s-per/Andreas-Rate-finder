@@ -1,0 +1,14 @@
+{
+   "name": "My Project Codespace",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {},
+   "postCreateCommand": "npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}
