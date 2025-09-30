@@ -1,27 +1,6 @@
 {
-  "name": "XAMPP-like PHP Environment",
-  "image": "mcr.microsoft.com/devcontainers/php:1-8.2-apache",
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts"
-    },
-    "ghcr.io/devcontainers/features/mysql:1": {
-      "version": "latest"
-    }
-  },
-  "forwardPorts": [80, 8080, 3306],
-  "postCreateCommand": "sudo a2enmod rewrite && sudo service apache2 restart && composer install",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "bmewburn.vscode-intelephense-client",
-        "esbenp.prettier-vscode",
-        "ms-vscode.live-server"
-      ]
-    }
-  },
-  "remoteUser": "vscode",
-  "mounts": [
-    "source=${localWorkspaceFolder}/,target=/var/www/html,type=bind,consistency=cached"
-  ]
+  "name": "PHP Codespace",
+  "image": "mcr.microsoft.com/devcontainers/php:8.2-apache",
+  "forwardPorts": [8000],
+  "postStartCommand": "php -S 0.0.0.0:8000 -t public"
 }
