@@ -109,3 +109,5 @@ Open `http://localhost:8000/` and fill in the form:
 
 - CORS is enabled broadly in `api/rates.php` to simplify local development.
 - Error handling includes validation on required fields, date parsing, occupants vs ages count, and network errors calling the remote API.
+
+## SonarCloud Test: Setup complete on 2025-09-30.
