@@ -1,0 +1,35 @@
+name: SonarCloud Analysis  # Renamed from "Build" for clarity
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest  # Linux for PHP compatibility (change to windows-latest if needed)
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for better relevancy of analysis
+
+      - name: Set up PHP  # Added for your PHP project
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'  # Matches your Codespaces/PHP setup
+
+      - name: Install Composer dependencies  # Added for PHP deps (skips if no composer.json)
+        run: composer install --prefer-dist --no-progress --no-interaction || true
+
+      - uses: SonarSource/sonarcloud-github-action@v3.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=jes-s-per
+            -Dsonar.projectKey=jes-s-per_Andreas-Rate-finder
+            -Dsonar.sources=.  # Scans all source files (PHP, HTML, JS)
