@@ -1,6 +1,17 @@
 {
-  "name": "PHP Codespace",
-  "image": "mcr.microsoft.com/devcontainers/php:8.2-apache",
-  "forwardPorts": [8000],
-  "postStartCommand": "php -S 0.0.0.0:8000 -t public"
+  "name": "PHP Project",
+  "image": "mcr.microsoft.com/devcontainers/php:1-8.3-bookworm",  // Or '8.2-bookworm' if you need PHP 8.2
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}  // Optional extras
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "xdebug.php-debug",
+        "ikappas.composer"
+      ]
+    }
+  },
+  "postCreateCommand": "if [ -f composer.json ]; then composer install; fi",
+  "forwardPorts": [8080]
 }
